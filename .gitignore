@@ -1,0 +1,11 @@
+.venv/
+.pipcache/
+__pycache__/
+*.pyc
+demo.log
+node_modules
+tmp/
+config/cache/
+config/logs/
+config/secret_key
+config/codex.sqlite3

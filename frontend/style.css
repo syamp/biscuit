@@ -1,0 +1,258 @@
+@import "antd/dist/reset.css";
+@import "uplot/dist/uPlot.min.css";
+@import "react-grid-layout/css/styles.css";
+@import "react-resizable/css/styles.css";
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.app-shell {
+  min-height: 100vh;
+}
+
+.side-nav {
+  border-right: 1px solid var(--antd-border-color, #d9d9d9);
+  padding-top: 12px;
+  background: transparent;
+}
+
+.side-nav-logo {
+  color: inherit;
+  text-align: center;
+  padding: 8px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  font-size: 16px;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  gap: 12px;
+  flex-wrap: wrap;
+  position: relative;
+  background: transparent;
+}
+
+.toolbar-input {
+  min-width: 160px;
+  flex: 1 1 180px;
+}
+.toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.panel-grid {
+  width: 100%;
+  min-height: 320px;
+  padding: 0 0 24px;
+}
+
+.panel-grid .react-grid-item {
+  transition: none;
+}
+
+.panel-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel-card .ant-card-head {
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.panel-card .ant-card-head-title {
+  min-width: 0;
+  flex: 1;
+}
+
+.panel-card .ant-card-head-title > .ant-space,
+.panel-card .ant-card-extra > .ant-space {
+  align-items: center;
+}
+
+.panel-card .ant-card-extra {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: flex-end;
+}
+
+.panel-meta-inline {
+  display: none;
+}
+
+.panel-card .ant-tag {
+  margin-inline-end: 0;
+}
+
+.panel-card .ant-card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 8px;
+  padding: 8px 12px 12px;
+}
+
+.panel-drag-handle {
+  cursor: grab;
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+  opacity: 0.7;
+}
+
+.panel-card.is-view .panel-drag-handle {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.panel-drag-handle:active {
+  cursor: grabbing;
+}
+
+.explorer-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.ant-tabs-nav {
+  margin-bottom: 4px;
+}
+
+.header-tabs .ant-tabs-nav {
+  margin-bottom: 0;
+}
+.header-tabs .ant-tabs-nav::before {
+  border-bottom: none;
+}
+.header-tabs .ant-tabs-ink-bar {
+  display: none !important;
+}
+
+.chart-frame {
+  flex: 1;
+  min-height: 220px;
+  position: relative;
+}
+
+.chart-legend-inline {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 6px 4px 0;
+  font-size: 12px;
+  color: inherit;
+}
+
+.uplot-inline-legend-time {
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.uplot-inline-legend-rows {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  align-items: center;
+}
+
+.uplot-inline-legend-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.uplot-inline-legend-swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  display: inline-block;
+  border: 1px solid rgba(15, 23, 42, 0.15);
+}
+
+.uplot-inline-legend-label {
+  white-space: nowrap;
+}
+
+.uplot-inline-legend-value {
+  font-variant-numeric: tabular-nums;
+  color: var(--legend-value-color, inherit);
+}
+
+.sql-preview {
+  background: rgba(15, 23, 42, 0.04);
+  border: 1px solid var(--antd-border-color, #d9d9d9);
+  border-radius: 8px;
+  padding: 12px;
+  margin: 0;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 12px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.metric-table .ant-table-body {
+  max-height: 260px;
+}
+
+.uplot .u-title {
+  color: inherit;
+}
+
+/* Hide default uPlot legend; we render a custom inline legend instead */
+.uplot .u-legend {
+  display: none !important;
+}
+
+
+@media (max-width: 768px) {
+  .chart-frame {
+    height: 220px;
+  }
+  .header-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .header-globals {
+    width: 100%;
+  }
+  .toolbar-actions {
+    width: 100%;
+  }
+}
+
+@media (max-width: 840px) {
+  .panel-card .ant-card-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .panel-card .ant-card-head-wrapper {
+    width: 100%;
+  }
+  .panel-card .ant-card-extra {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 640px) {
+  .panel-card .ant-card-extra {
+    display: none;
+  }
+  .panel-meta-inline {
+    display: inline-flex;
+  }
+}

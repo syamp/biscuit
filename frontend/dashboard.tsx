@@ -34,7 +34,6 @@ import {
   HolderOutlined,
   EditOutlined,
   EyeOutlined,
-  BellOutlined,
   SettingOutlined,
   MoreOutlined,
   CopyOutlined,
@@ -216,7 +215,7 @@ const GRID_COLS = 12;
 const GRID_ROW_HEIGHT = 130;
 const DEFAULT_PANEL_W = 4;
 const DEFAULT_PANEL_H = 3;
-type ViewKey = "dashboards" | "explorer" | "alerts" | "settings";
+type ViewKey = "dashboards" | "explorer" | "settings";
 const DEFAULT_VIEW: ViewKey = "dashboards";
 
 function parseInitialLocation(): { view: ViewKey; slug?: string } {
@@ -224,7 +223,7 @@ function parseInitialLocation(): { view: ViewKey; slug?: string } {
   const viewParam = params.get("view");
   const slug = params.get("dash") || undefined;
   return {
-    view: (["dashboards", "explorer", "alerts", "settings"] as ViewKey[]).includes(viewParam as ViewKey)
+    view: (["dashboards", "explorer", "settings"] as ViewKey[]).includes(viewParam as ViewKey)
       ? (viewParam as ViewKey)
       : DEFAULT_VIEW,
     slug,
@@ -1738,7 +1737,7 @@ const App: React.FC = () => {
             <Title level={4} style={{ margin: 0, color: token.colorTextHeading }}>
               Biscuit
             </Title>
-            <Text type="secondary">{view === "dashboards" ? "Dashboards" : view === "explorer" ? "Metrics" : view === "alerts" ? "Alerts" : "Settings"}</Text>
+            <Text type="secondary">{view === "dashboards" ? "Dashboards" : view === "explorer" ? "Metrics" : "Settings"}</Text>
           </Space>
           <Space align="center" wrap size="small">
             <Select
@@ -1789,7 +1788,6 @@ const App: React.FC = () => {
                 { key: "dashboards", icon: <DashboardOutlined />, label: "Dashboards" },
                 { key: "explorer", icon: <LineChartOutlined />, label: "Metrics" },
                 { type: "divider" },
-                { key: "alerts", icon: <BellOutlined />, label: "Alerts" },
                 { key: "settings", icon: <SettingOutlined />, label: "Settings" },
               ]}
             />
@@ -1969,17 +1967,6 @@ const App: React.FC = () => {
                 dashboardTitle={title || slug}
                 onAddPanel={handleAddPanel}
               />
-            ) : view === "alerts" ? (
-              <Card>
-                <Empty
-                  description={
-                    <Space direction="vertical" align="center">
-                      <Text strong>Alerts</Text>
-                      <Text type="secondary">Hook up alerting rules here.</Text>
-                    </Space>
-                  }
-                />
-              </Card>
             ) : (
               <Card>
                 <Empty

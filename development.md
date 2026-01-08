@@ -25,6 +25,10 @@ export FDB_CLUSTER_FILE=/etc/foundationdb/fdb.cluster
 - Tests: `.venv/bin/python tests.py` (skips if FDB is unavailable)
 - Frontend build: `npm install` (once) then `npm run build`
 
+## Codex inside the container
+- When working from the Podman dev container, mount your host `.codex` directory so CLI secrets are available: add `-v "$HOME/.codex:/root/.codex:ro"` (or the equivalent user path) alongside the existing `-v "$(pwd):/workspace:z"` bind.
+- Once inside the container shell, start the agent runner with `npx codex --sandbox danger-full-access` from `/workspace` to match the repo layout and allow the CLI to manage files without additional sandbox prompts.
+
 ## API quick reference
 - Ingest gauge: `POST /ingest/gauge` with `{metric_id?|name?, ts, value, tags?, step?, slots?}`
 - Ingest counter: `POST /ingest/counter` with `{metric_id?|name?, ts, raw_value, tags?, step?, slots?}` (stores raw cumulative; use `bucket_rate` in queries)

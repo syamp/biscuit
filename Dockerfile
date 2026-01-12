@@ -7,7 +7,7 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     FDB_CLUSTER_FILE=/etc/foundationdb/fdb.cluster
 
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends curl ca-certificates git runit nodejs npm procps && \
+    apt-get install -y --no-install-recommends curl ca-certificates git runit nodejs npm procps jq && \
     curl -fsSL "https://github.com/apple/foundationdb/releases/download/${FDB_VERSION}/foundationdb-clients_${FDB_VERSION}-1_amd64.deb" -o /tmp/fdb-clients.deb && \
     curl -fsSL "https://github.com/apple/foundationdb/releases/download/${FDB_VERSION}/foundationdb-server_${FDB_VERSION}-1_amd64.deb" -o /tmp/fdb-server.deb && \
     apt-get install -y --no-install-recommends /tmp/fdb-clients.deb /tmp/fdb-server.deb && \
